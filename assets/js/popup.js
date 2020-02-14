@@ -1,6 +1,6 @@
 function openWebsite() {
   chrome.tabs.create({
-    'url': 'https://www.brooklynmuseum.org/'
+    'url': 'https://www.grpm.org/'
   });
 }
 

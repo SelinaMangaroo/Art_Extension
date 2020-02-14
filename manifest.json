@@ -1,7 +1,7 @@
 {
     "author": "Selina Mangaroo",
     "name": "Art Extension",
-    "description" : "This extension is displaying images from a museum archive.",
+    "description" : "This extension is displaying images from the Grand Rapids Public Museum.",
     "version": "1.0",
     "manifest_version": 2,
     "browser_action": {

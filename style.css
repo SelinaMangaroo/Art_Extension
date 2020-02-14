@@ -1,0 +1,34 @@
+body {
+  width: 100%;
+  height: 100%;
+  /*
+  margin: 0px;
+  padding: 0px;
+  */
+  overflow-x: hidden;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.contain {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+aside p {
+  margin-left: 34px
+}
+
+aside {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  color: #b8b8b8;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.33) 33%, rgba(0, 0, 0, 0.66) 100%)
+}

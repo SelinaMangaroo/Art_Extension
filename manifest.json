@@ -1,0 +1,22 @@
+{
+    "author": "Selina Mangaroo",
+    "name": "Art Extension",
+    "description" : "This extension is displaying images from a museum archive.",
+    "version": "1.0",
+    "manifest_version": 2,
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon16.png"
+    },
+
+    "chrome_url_overrides": {
+       "newtab": "newtab.html"
+    },
+
+    "icons": {
+       "16": "icon16.png"
+    },
+
+     "permissions": [ "activeTab" ]
+
+}

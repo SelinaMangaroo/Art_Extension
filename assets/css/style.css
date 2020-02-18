@@ -5,18 +5,33 @@ body {
   margin: 0px;
   padding: 0px;
   */
-  overflow-x: hidden;
-}
-
-.responsive {
-  width: 100%;
-  height: auto;
+  overflow: hidden;
+  font-weight: 300;
+  font-size: 16px;
+  background-color: white;
 }
 
 .contain {
+  /*
   object-fit: contain;
   width: 100%;
   height: auto;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  max-height: 100%;
+*/
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  overflow: auto;
 }
 
 aside p {
@@ -29,6 +44,23 @@ aside {
   left: 0;
   right: 0;
   padding: 20px;
-  color: #b8b8b8;
+  color: #4BB7E6;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.33) 33%, rgba(0, 0, 0, 0.66) 100%)
+}
+
+button {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: #FF9F19;
+}
+
+@media (orientation:portrait) {
+  #main {
+    background-size: contain;
+    background-color: black;
+  }
 }

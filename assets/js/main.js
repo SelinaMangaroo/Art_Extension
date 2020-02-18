@@ -1,24 +1,41 @@
-async function FETCH_USERS() {
+async function FETCH_DATA() {
   try {
-    const response = await fetch('https://picsum.photos/id/0/info');
-    const data =  await response.json();
 
-    document.getElementById('creator').innerHTML = data.author;
-    //document.getElementById('picture').innerHTML = data.download_url;
+    const response = await fetch('https://grpmcollections.org/admin/service.php/simple/images?q=set:becuriousegypt&pretty=1');
+    const data = await response.json();
+
+    document.getElementById('object_name').innerHTML = data[168877].object_name;
+
+    document.getElementById('entity_name').innerHTML = data[168877].entity_name;
+
+    document.getElementById('date').innerHTML = data[168877].date;
 
     var image = new Image();
-    image.src = data.download_url;
-    document.getElementById('picture').appendChild(image).setAttribute('class', 'contain');
+    image.src = data[168877].media_large_url;
+    document.getElementById('main').appendChild(image).setAttribute('class', 'contain');
 
-    document.getElementById('partner').innerHTML = data.width;
-    document.getElementById('credits').innerHTML = data.height;
+    // i is each json object
+    for (var i in data) {
+      console.log(i + '---' + data[i].object_name + '---' + data[i].entity_name + '---' + data[i].date);
+    }
 
-    //document.getElementById('download').innerHTML = data.download_url;
+    /*
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var myObj = JSON.parse(this.responseText);
+        document.getElementById("demo").innerHTML = myObj.name;
+      }
+    };
+    xmlhttp.open("GET", "json_demo.txt", true);
+    xmlhttp.send();
+    */
 
     console.log(data);
+
   } catch (err) {
     console.error(err);
   }
 }
 
-FETCH_USERS();
+FETCH_DATA();

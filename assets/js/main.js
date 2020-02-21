@@ -1,41 +1,49 @@
-async function FETCH_DATA() {
-  try {
+var request = new XMLHttpRequest();
+var endpoint = 'https://grpmcollections.org/admin/service.php/simple/images?q=set:becuriousegypt&pretty=1';
+request.open('GET', endpoint, true);
 
-    const response = await fetch('https://grpmcollections.org/admin/service.php/simple/images?q=set:becuriousegypt&pretty=1');
-    const data = await response.json();
+request.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status == 200) {
+    var data = JSON.parse(this.responseText);
 
-    document.getElementById('object_name').innerHTML = data[168877].object_name;
-
-    document.getElementById('entity_name').innerHTML = data[168877].entity_name;
-
-    document.getElementById('date').innerHTML = data[168877].date;
-
-    var image = new Image();
-    image.src = data[168877].media_large_url;
-    document.getElementById('main').appendChild(image).setAttribute('class', 'contain');
-
-    // i is each json object
+    var result = [];
     for (var i in data) {
-      console.log(i + '---' + data[i].object_name + '---' + data[i].entity_name + '---' + data[i].date);
+      result.push([i, data[i]]);
     }
 
-    /*
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        var myObj = JSON.parse(this.responseText);
-        document.getElementById("demo").innerHTML = myObj.name;
+    console.log(result);
+    var index = 0;
+
+    document.getElementById('object_name').innerHTML = result[index][1].object_name;
+    document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
+    document.getElementById('date').innerHTML = result[index][1].date;
+    var IMG_SRC = result[index][1].media_large_url;
+    document.body.style.backgroundImage = 'url(' + IMG_SRC + ')';
+
+    //document.getElementById('main').style.backgroundImage = image.setAttribute('class', 'contain');
+    //document.getElementById('main').appendChild(image).setAttribute('class', 'contain');
+
+    document.getElementById('refresh').addEventListener('click', newObject);
+
+    function newObject() {
+
+      index += 1;
+
+      console.log(index);
+      document.getElementById('object_name').innerHTML = result[index][1].object_name;
+      document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
+      document.getElementById('date').innerHTML = result[index][1].date;
+      var IMG_SRC = result[index][1].media_large_url;
+      document.body.style.backgroundImage = 'url(' + IMG_SRC + ')';
+
+      if (index === (result.length - 1)) {
+        index = 0;
       }
-    };
-    xmlhttp.open("GET", "json_demo.txt", true);
-    xmlhttp.send();
-    */
 
-    console.log(data);
+    }
 
-  } catch (err) {
-    console.error(err);
   }
-}
 
-FETCH_DATA();
+};
+
+request.send();

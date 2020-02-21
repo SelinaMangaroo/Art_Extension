@@ -20,16 +20,10 @@ request.onreadystatechange = function () {
     var IMG_SRC = result[index][1].media_large_url;
     document.body.style.backgroundImage = 'url(' + IMG_SRC + ')';
 
-    //document.getElementById('main').style.backgroundImage = image.setAttribute('class', 'contain');
-    //document.getElementById('main').appendChild(image).setAttribute('class', 'contain');
-
     document.getElementById('refresh').addEventListener('click', newObject);
 
     function newObject() {
-
       index += 1;
-
-      console.log(index);
       document.getElementById('object_name').innerHTML = result[index][1].object_name;
       document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
       document.getElementById('date').innerHTML = result[index][1].date;
@@ -37,7 +31,7 @@ request.onreadystatechange = function () {
       document.body.style.backgroundImage = 'url(' + IMG_SRC + ')';
 
       if (index === (result.length - 1)) {
-        index = 0;
+        index = 0 - 1;
       }
 
     }

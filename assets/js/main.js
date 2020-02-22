@@ -40,8 +40,9 @@ request.onreadystatechange = function () {
 
     var index = 0; //0 is the first element in the array, since the array is random, different objects are 0
 
-    //the following 5 lines ensure an object is loaded when a new tab is opened
+    //the following 6 lines ensure an object is loaded when a new tab is opened
     document.getElementById('object_name').innerHTML = result[index][1].object_name;
+    document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id);
     document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
     document.getElementById('date').innerHTML = result[index][1].date;
     var IMG_SRC = result[index][1].media_large_url;
@@ -54,6 +55,7 @@ request.onreadystatechange = function () {
     function newObject() {
       index += 1;
       document.getElementById('object_name').innerHTML = result[index][1].object_name;
+      document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id);
       document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
       document.getElementById('date').innerHTML = result[index][1].date;
       var IMG_SRC = result[index][1].media_large_url;

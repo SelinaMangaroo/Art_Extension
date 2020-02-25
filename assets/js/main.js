@@ -1,13 +1,15 @@
-var request = new XMLHttpRequest();
-var endpoint = 'https://grpmcollections.org/admin/service.php/simple/images?q=set:becuriousegypt&pretty=1'; //source of the data being used
+var request = new XMLHttpRequest(); //initialize the request
+var endpoint = 'https://grpmcollections.org/admin/service.php/simple/images?q=set:becuriousegypt&pretty=1&noCache=1'; //source of the data being used
 request.open('GET', endpoint, true);
 
 request.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
     var data = JSON.parse(this.responseText); //store the JSON in a variable called data
 
-    var result = [];
-    for (var x in data) {
+    //console.log(request);
+
+    var result = []; //at this point this is an empty array
+    for (var x in data) { //for every JSON object
       result.push([x, data[x]]); //take each JSON object and push it into to an array, so each object is now within an array element
     }
 
@@ -20,18 +22,18 @@ request.onreadystatechange = function () {
       }
     }
 
-    shuffleArray(result); //calling the randomizer on our result array
+    shuffleArray(result); //calling the randomizer on our result array, to the array will be random on new tab open.
 
     for (var i = 0; i < result.length; i++) { //removing {'ok': true} object from the array so it will not be rendered
       if (result[i][0] === 'ok') {
-        result.splice(i, 1);
+        result.splice(i, 1); //remove element
         i--; //decrement the index variable so it does not skip the next item in the array, will take care of all instances
       }
     }
 
     for (var i = 0; i < result.length; i++) { //removes any objects that have undefined fields from being rendered in array
       if ((result[i][1].object_name === undefined) || (result[i][1].entity_name === undefined) || (result[i][1].media_large_url === undefined) || (result[i][1].date === undefined)) {
-        result.splice(i, 1);
+        result.splice(i, 1); //remove element
         i--; //decrement the index variable so it does not skip the next item in the array, will take care of all instances
       }
     }
@@ -40,10 +42,11 @@ request.onreadystatechange = function () {
 
     var index = 0; //0 is the first element in the array, since the array is randomized, different objects are going to be rendered
 
-    //the following 6 lines ensure an object is loaded when a new tab is opened
+    //the following 7 lines ensure an object is loaded when a new tab is opened
     document.getElementById('object_name').innerHTML = result[index][1].object_name;
-    document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id); //link will take you directly to the object detail page
+    document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id); //link takes you to the object detail page
     document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
+    document.getElementById('entity_name').setAttribute('href', 'https://grpmcollections.org/Detail/entities/' + result[index][1].entity_id); //link takes you to the entity detail page
     document.getElementById('date').innerHTML = result[index][1].date;
     var IMG_SRC = result[index][1].media_large_url;
     document.body.style.backgroundImage = 'url(' + IMG_SRC + ')';
@@ -55,7 +58,8 @@ request.onreadystatechange = function () {
     function newObject() {
       index += 1; //index is initially set to 0, so on each click of refresh button, new object will be rendered
       document.getElementById('object_name').innerHTML = result[index][1].object_name;
-      document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id); //link will take you directly to the object detail page
+      document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id); //link takes you to the object detail page
+      document.getElementById('entity_name').setAttribute('href', 'https://grpmcollections.org/Detail/entities/' + result[index][1].entity_id); //link takes you to the entity detail page
       document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
       document.getElementById('date').innerHTML = result[index][1].date;
       var IMG_SRC = result[index][1].media_large_url;

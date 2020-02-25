@@ -36,7 +36,7 @@ request.onreadystatechange = function () {
       }
     }
 
-    console.log(result); //track array at final stage before being rendered
+    //console.log(result); //track array at final stage before being rendered
 
     var index = 0; //0 is the first element in the array, since the array is random, different objects are 0
 

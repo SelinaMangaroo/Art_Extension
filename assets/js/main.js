@@ -22,14 +22,14 @@ request.onreadystatechange = function () {
 
     shuffleArray(result); //calling the randomizer on our result array
 
-    for (var i = 0; i < result.length; i++) { //removing {'ok': true} object from the array
+    for (var i = 0; i < result.length; i++) { //removing {'ok': true} object from the array so it will not be rendered
       if (result[i][0] === 'ok') {
         result.splice(i, 1);
         i--; //decrement the index variable so it does not skip the next item in the array, will take care of all instances
       }
     }
 
-    for (var i = 0; i < result.length; i++) {
+    for (var i = 0; i < result.length; i++) { //removes any objects that have undefined fields from being rendered in array
       if ((result[i][1].object_name === undefined) || (result[i][1].entity_name === undefined) || (result[i][1].media_large_url === undefined) || (result[i][1].date === undefined)) {
         result.splice(i, 1);
         i--; //decrement the index variable so it does not skip the next item in the array, will take care of all instances
@@ -38,11 +38,11 @@ request.onreadystatechange = function () {
 
     //console.log(result); //track array at final stage before being rendered
 
-    var index = 0; //0 is the first element in the array, since the array is random, different objects are 0
+    var index = 0; //0 is the first element in the array, since the array is randomized, different objects are going to be rendered
 
     //the following 6 lines ensure an object is loaded when a new tab is opened
     document.getElementById('object_name').innerHTML = result[index][1].object_name;
-    document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id);
+    document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id); //link will take you directly to the object detail page
     document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
     document.getElementById('date').innerHTML = result[index][1].date;
     var IMG_SRC = result[index][1].media_large_url;
@@ -53,15 +53,15 @@ request.onreadystatechange = function () {
 
     //this function increments through the array on each click of the refresh button
     function newObject() {
-      index += 1;
+      index += 1; //index is initially set to 0, so on each click of refresh button, new object will be rendered
       document.getElementById('object_name').innerHTML = result[index][1].object_name;
-      document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id);
+      document.getElementById('object_name').setAttribute('href', 'https://grpmcollections.org/Detail/objects/' + result[index][1].object_id); //link will take you directly to the object detail page
       document.getElementById('entity_name').innerHTML = result[index][1].entity_name;
       document.getElementById('date').innerHTML = result[index][1].date;
       var IMG_SRC = result[index][1].media_large_url;
       document.body.style.backgroundImage = 'url(' + IMG_SRC + ')';
 
-      //this if statement ensures that you can keep incrementing through the array endlessly
+      //this if statement ensures that you can keep incrementing through the array endlessly, so it will keep pulling new objects when refresh button clicked
       if (index === (result.length - 1)) {
         index = 0 - 1;
       }

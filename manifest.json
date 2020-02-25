@@ -1,6 +1,6 @@
 {
     "author": "Selina Mangaroo",
-    "name": "Art Extension",
+    "name": "Grand Rapids Public Museum Chrome Browser Extension",
     "description" : "This extension is displaying images from the Grand Rapids Public Museum.",
     "version": "1.0",
     "manifest_version": 2,

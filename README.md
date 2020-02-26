@@ -36,5 +36,8 @@ There is a refresh button that will appear in an aside along with the object inf
 
 ![Image](/assets/images/readme/5.png)
 
-## Author
+### Author
 Selina Mangaroo
+
+### Project Status
+Still in progress

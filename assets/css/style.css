@@ -1,9 +1,13 @@
 body {
   font-weight: 300;
   font-size: 16px;
+  height:100vh;
   margin: 0;
   background-color: white;
   overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 #main {
@@ -13,11 +17,11 @@ body {
   bottom: 0;
   right: 0;
   color: white;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
+  /*
   opacity: 0;
   transition: opacity .1s linear;
+  */
   text-shadow: 0 2px 2px rgba(0, 0, 0, .5)
 }
 
@@ -48,7 +52,6 @@ button {
   overflow: hidden;
   outline: none;
   color: #F3F3F3;
-  margin: 0px 8px 2px 0;
   vertical-align: text-bottom;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26)
 }

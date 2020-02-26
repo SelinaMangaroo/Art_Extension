@@ -16,7 +16,8 @@ Clone repository to your local machine
 
 Head over to chrome://extensions/
 
-![At the top right, turn on Developer mode.](/assets/images/readme/1.JPG)
+At the top right, turn on Developer mode.
+!(/assets/images/readme/1.JPG)
 
 Click Load Unpacked
 

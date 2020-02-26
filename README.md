@@ -13,12 +13,17 @@ There is a refresh button that will appear in an aside along with the object inf
 ## Installation
 
 Clone repository to your local machine
+
 Head over to chrome://extensions/
-At the top right, turn on Developer mode.
-![Image description](/assets/images/readme/1.JPG)
+
+![At the top right, turn on Developer mode.](/assets/images/readme/1.JPG)
+
 Click Load Unpacked
+
 Find and select the directory with the files
+
 You should see this
+
 Open a new tab in Chrome. Make sure it loads and works correctly.
 
 ## Author

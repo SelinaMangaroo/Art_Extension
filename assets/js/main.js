@@ -22,7 +22,7 @@ request.onreadystatechange = function () {
       }
     }
 
-    shuffleArray(result); //calling the randomizer on our result array, to the array will be random on new tab open.
+    shuffleArray(result); //calling the randomizer on our result array, so the object will be random on new tab open.
 
     for (var i = 0; i < result.length; i++) { //removing {'ok': true} object from the array so it will not be rendered
       if (result[i][0] === 'ok') {
@@ -38,7 +38,7 @@ request.onreadystatechange = function () {
       }
     }
 
-    //console.log(result); //track array at final stage before being rendered
+    console.log(result); //track array at final stage before being rendered
 
     var index = 0; //0 is the first element in the array, since the array is randomized, different objects are going to be rendered
 

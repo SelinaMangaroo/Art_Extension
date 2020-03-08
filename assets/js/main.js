@@ -59,7 +59,7 @@ request.onreadystatechange = function () {
      * @event
      * click event for the refresh button
      */
-    document.getElementById('refresh').addEventListener('click', function newObject() {
+    document.getElementById('refresh').addEventListener('click', refresh = () => {
       window.location.reload();
     });
 

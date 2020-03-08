@@ -34,7 +34,7 @@ There is a refresh button that will appear in an aside along with the object inf
 
 7. Open a new tab in Chrome. Make sure it loads and works correctly.
 
-![Image](/assets/images/readme/5.png)
+![Image](/assets/images/readme/5.JPG)
 
 ### Author
 Selina Mangaroo

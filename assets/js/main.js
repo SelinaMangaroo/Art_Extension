@@ -7,6 +7,8 @@ request.onreadystatechange = function () {
   if (this.readyState == 4 && this.status == 200) {
     var data = JSON.parse(this.responseText); //store the JSON in a variable called data
 
+    document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+
     /**
      * @type {Array<JSON>}
      * @description this is an empty array
@@ -47,7 +49,7 @@ request.onreadystatechange = function () {
     }
 
     if (result[index][1].media_large_url === undefined) {
-      windows.location.reload();
+      window.location.reload();
     }else {
       var IMG_SRC = result[index][1].media_large_url;
       document.body.style.backgroundImage = 'url(' + IMG_SRC + ')';
@@ -62,7 +64,6 @@ request.onreadystatechange = function () {
     document.getElementById('refresh').addEventListener('click', refresh => {
       window.location.reload();
     });
-
   }
 };
 
